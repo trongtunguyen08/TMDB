@@ -24,14 +24,13 @@ const MovieDetails = ({ navigation, route }) => {
         getDetails(items?.media_type || mediaType, items?.id)
             .then(res => {
                 setMovieDetails(res.data)
+                return getCredits(items?.media_type || mediaType, items?.id)
             })
-        getCredits(items?.media_type || mediaType, items?.id)
             .then(res => {
                 const tempCredits = res.data.cast.filter(item => item.known_for_department == 'Acting' && item.profile_path != "")
                 setCredits(tempCredits)
-
+                return getVideos(items?.media_type || mediaType, items?.id)
             })
-        getVideos(items?.media_type || mediaType, items?.id)
             .then(res => {
                 const temptVideos = res.data.results.filter(item => item.site == 'YouTube')[0]
                 setTrailer(temptVideos)

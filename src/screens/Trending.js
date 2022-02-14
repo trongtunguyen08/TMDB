@@ -13,7 +13,6 @@ import {
 import { useSelector } from 'react-redux'
 import { LinearGradient } from 'expo-linear-gradient'
 import RNBounceable from '@freakycoder/react-native-bounceable'
-import AXIOS from 'axios'
 
 import {
     getTrendingMovies,
